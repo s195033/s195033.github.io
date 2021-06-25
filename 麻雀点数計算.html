@@ -10,7 +10,7 @@
 	<body>
 		<h2>麻雀の点数を計算する例</h2>
 		<div id="app">
-			<p>アガリ：
+			<p>アガリ： 
 			<select v-model="agari">
 				<option disabled value="">アガリの形</option>
 				<option value="子のロン">子のロン</option>
@@ -58,7 +58,7 @@
 				<label><input type="checkbox" value="yakuman" v-model="picked">役満</label>
 				<label><input type="checkbox" value="double" v-model="picked">ダブル役満</label>-->
 			<button v-on:click="keisan">計算する</button>
-			<p>　　　あなたの点数は{{ tensu }}点です</p>
+			<p>　　　あなたの点数は{{ tensu }}点です   </p>
 		</div>
 
 		<script>
@@ -67,6 +67,28 @@
 				data: {
 					fu: '',
 					agari: '',
+					han: '',
+					tensu: "",
+				},
+				methods: {
+					keisan: function () {
+						if (this.fu == "20符" && this.han == "2飜" && this.agari == "子のツモ") {
+							this.tensu = "1,500";
+						} else if (this.fu == "20符" && this.han == "3飜" && this.agari == "子のツモ") {
+							this.tensu = "2,700";
+						} else if (this.fu == "25符" && this.han == "4飜" && this.agari == "子のツモ") {
+							this.tensu = "5,200";
+						} else if (this.fu == "25符" && this.han == "2飜" && this.agari == "子のロン") {
+							this.tensu = "1,600";
+						} else if (this.fu == "25符" && this.han == "3飜" && this.agari == "子のロン") {
+							this.tensu = "3,200";
+						} else if (this.fu == "25符" && this.han == "4飜" && this.agari == "子のロン") {
+							this.tensu = "6,400";
+						}
+						else {
+							this.tensu = 0;
+						}
+					}
 				}
 			})
 		</script>
