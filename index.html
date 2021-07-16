@@ -8,7 +8,7 @@
 	</head>
 	
 	<body>
-		<h2>麻雀の点数を計算する例</h2>
+		<h2>麻雀点数計算</h2>
 		<div id="app">
 			<p>アガリ： 
 			<select v-model="agari">
@@ -51,7 +51,7 @@
 				</select>
 			</p>
 			<p>5飜以上符の設定不要</p>
-			<p>計算するときはダブルクリックして下さい</p>
+			<p>続けて計算したいときはダブルクリックすると表示されます</p>
 			<button v-on:click="keisan">計算する</button>
 			<p v-show="show">　　　{{ "あなたの点数は" + tensu + "点です" }}   </p>
 		</div>
