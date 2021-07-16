@@ -57,8 +57,10 @@
 				<label><input type="checkbox" value="mankan" v-model="picked">満貫</label>
 				<label><input type="checkbox" value="yakuman" v-model="picked">役満</label>
 				<label><input type="checkbox" value="double" v-model="picked">ダブル役満</label>-->
+			<p>5飜以上符の設定不要</p>
+			<p>計算するときはダブルクリックして下さい</p>
 			<button v-on:click="keisan">計算する</button>
-			<p>　　　あなたの点数は{{ tensu }}点です   </p>
+			<p v-show="show">　　　{{ "あなたの点数は" + tensu + "点です" }}   </p>
 		</div>
 
 		<script>
@@ -69,9 +71,11 @@
 					agari: '',
 					han: '',
 					tensu: "",
+					show: false,
 				},
 				methods: {
 					keisan: function () {
+						this.show = !this.show
 						if (this.fu == "20符" && this.han == "2飜" && this.agari == "子のツモ") {
 							this.tensu = "1,500";
 						} else if (this.fu == "20符" && this.han == "3飜" && this.agari == "子のツモ") {
@@ -142,10 +146,141 @@
 							this.tensu = "7,700";
 						} else if (this.fu == "40符" && this.han == "1飜" && this.agari == "親のツモ") {
 							this.tensu = "2,100";
+						} else if (this.fu == "40符" && this.han == "2飜" && this.agari == "親のツモ") {
+							this.tensu = "3,900";
 						} else if (this.fu == "40符" && this.han == "3飜" && this.agari == "親のツモ") {
 							this.tensu = "7,800";
-						} else if (this.fu == "40符" && this.han == "3飜" && this.agari == "親のツモ") {
-							this.tensu = ""
+						} else if (this.fu == "50符" && this.han == "1飜" && (this.agari == "子のロン" || this.agari == "子のツモ")) {
+							this.tensu = "1,600";
+						} else if (this.fu == "50符" && this.han == "2飜" && (this.agari == "子のロン" || this.agari == "子のツモ")) {
+							this.tensu = "3,200";
+						} else if (this.fu == "50符" && this.han == "3飜" && (this.agari == "子のロン" || this.agari == "子のツモ")) {
+							this.tensu = "6,400";
+						} else if (this.fu == "50符" && this.han == "1飜" && (this.agari == "親のロン" || this.agari == "親のツモ")) {
+							this.tensu = "2,400";
+						} else if (this.fu == "50符" && this.han == "2飜" && (this.agari == "親のロン" || this.agari == "親のツモ")) {
+							this.tensu = "4,800";
+						} else if (this.fu == "50符" && this.han == "3飜" && (this.agari == "親のロン" || this.agari == "親のツモ")) {
+							this.tensu = "9,600";
+						} else if (this.fu == "60符" && this.han == "1飜" && (this.agari == "子のロン" || this.agari == "子のツモ")) {
+							this.tensu = "2,000";
+						} else if (this.fu == "60符" && this.han == "2飜" && this.agari == "子のロン") {
+							this.tensu = "3,900";
+						} else if (this.fu == "60符" && this.han == "3飜" && this.agari == "子のロン") {
+							this.tensu = "7,700";
+						} else if (this.fu == "60符" && this.han == "2飜" && this.agari == "子のツモ") {
+							this.tensu = "4,000";
+						} else if (this.fu == "60符" && this.han == "3飜" && this.agari == "子のツモ") {
+							this.tensu = "7,900";
+						} else if ((this.fu == "40符" || this.fu == "50符" || this.fu == "60符") && this.han == "4飜" && (this.agari == "子のロン" || this.agari == "子のツモ")) {
+							this.tensu = "8,000";
+						} else if (this.fu == "60符" && this.han == "1飜" && this.agari == "親のロン") {
+							this.tensu = "2,900";
+						} else if (this.fu == "60符" && this.han == "2飜" && this.agari == "親のロン") {
+							this.tensu = "5,800";
+						} else if (this.fu == "60符" && this.han == "3飜" && this.agari == "親のロン") {
+							this.tensu = "11,600";
+						} else if (this.fu == "60符" && this.han == "1飜" && this.agari == "親のツモ") {
+							this.tensu = "3,000";
+						} else if (this.fu == "60符" && this.han == "2飜" && this.agari == "親のツモ") {
+							this.tensu = "6,000";
+						} else if (this.fu == "60符" && this.han == "3飜" && this.agari == "親のツモ") {
+							this.tensu = "11,700";
+						} else if ((this.fu == "40符" || this.fu == "50符" || this.fu == "60符") && this.han == "4飜" && (this.agari == "親のロン" || this.agari == "親のツモ")) {
+							this.tensu = "12,000";
+						} else if (this.fu == "70符" && this.han == "1飜" && this.agari == "子のロン") {
+							this.tensu = "2,300";
+						} else if (this.fu == "70符" && this.han == "2飜" && this.agari == "子のロン") {
+							this.tensu = "4,500";
+						} else if (this.fu == "70符" && this.han == "1飜" && this.agari == "子のツモ") {
+							this.tensu = "2,400";
+						} else if (this.fu == "70符" && this.han == "2飜" && this.agari == "子のツモ") {
+							this.tensu = "4,700";
+						} else if (this.fu == "80符" && this.han == "1飜" && this.agari == "子のロン") {
+							this.tensu = "2,600";
+						} else if (this.fu == "80符" && this.han == "2飜" && (this.agari == "子のロン" || this.agari == "子のツモ")) {
+							this.tensu = "5,200";
+						} else if (this.fu == "80符" && this.han == "1飜" && this.agari == "子のツモ") {
+							this.tensu = "2,700";
+						} else if (this.fu == "90符" && this.han == "1飜" && this.agari == "子のロン") {
+							this.tensu = "2,900";
+						} else if (this.fu == "90符" && this.han == "2飜" && this.agari == "子のロン") {
+							this.tensu = "5,800";
+						} else if (this.fu == "90符" && this.han == "1飜" && this.agari == "子のツモ") {
+							this.tensu = "3,100";
+						} else if (this.fu == "90符" && this.han == "2飜" && this.agari == "子のツモ") {
+							this.tensu = "5,900";
+						} else if (this.fu == "100符" && this.han == "1飜" && (this.agari == "子のロン" || this.agari == "子のツモ")) {
+							this.tensu = "3,200";
+						} else if (this.fu == "100符" && this.han == "2飜" && (this.agari == "子のロン" || this.agari == "子のツモ")) {
+							this.tensu = "6,400";
+						} else if (this.fu == "110符" && this.han == "1飜" && (this.agari == "子のロン" || this.agari == "子のツモ")) {
+							this.tensu = "3,600";
+						} else if (this.fu == "110符" && this.han == "2飜" && this.agari == "子のロン") {
+							this.tensu = "7,100";
+						} else if (this.fu == "110符" && this.han == "2飜" && this.agari == "子のツモ") {
+							this.tensu = "7,200";
+						} else if ((this.fu == "70符" || this.fu == "80符" || this.fu == "90符" || this.fu == "100符" || this.fu == "110符") && (this.han == "3飜" || this.han == "4飜") && (this.agari == "子のロン" || this.agari == "子のツモ")) {
+							this.tensu = "8,000";
+						} else if (this.fu == "70符" && this.han == "1飜" && this.agari == "親のロン") {
+							this.tensu = "3,400";
+						} else if (this.fu == "70符" && this.han == "2飜" && this.agari == "親のロン") {
+							this.tensu = "6,800";
+						} else if (this.fu == "70符" && this.han == "1飜" && this.agari == "親のツモ") {
+							this.tensu = "3,600";
+						} else if (this.fu == "70符" && this.han == "1飜" && this.agari == "親のツモ") {
+							this.tensu = "6,900";
+						} else if (this.fu == "80符" && this.han == "1飜" && (this.agari == "親のロン" || this.agari == "親のツモ")) {
+							this.tensu = "3,900";
+						} else if (this.fu == "80符" && this.han == "2飜" && this.agari == "親のロン") {
+							this.tensu = "7,700";
+						} else if (this.fu == "80符" && this.han == "2飜" && this.agari == "親のツモ") {
+							this.tensu = "7,800";
+						} else if (this.fu == "90符" && this.han == "1飜" && this.agari == "親のロン") {
+							this.tensu = "4,400";
+						} else if (this.fu == "90符" && this.han == "2飜" && (this.agari == "親のロン" || this.agari == "親のツモ")) {
+							this.tensu = "8,700";
+						} else if (this.fu == "90符" && this.han == "1飜" && this.agari == "親のツモ") {
+							this.tensu = "4,500";
+						} else if (this.fu == "100符" && this.han == "1飜" && (this.agari == "親のツモ" || this.agari == "親のツモ")) {
+							this.tensu = "4,800";
+						} else if (this.fu == "100符" && this.han == "2飜" && (this.agari == "親のツモ" || this.agari == "親のツモ")) {
+							this.tensu = "9,600";
+						} else if (this.fu == "110符" && this.han == "1飜" && this.agari == "親のロン") {
+							this.tensu = "5,300";
+						} else if (this.fu == "110符" && this.han == "2飜" && this.agari == "親のロン") {
+							this.tensu = "10,600"
+						} else if (this.fu == "110符" && this.han == "1飜" && this.agari == "親のツモ") {
+							this.tensu = "5,400";
+						} else if (this.fu == "110符" && this.han == "2飜" && this.agari == "親のツモ") {
+							this.tensu = "10,800";
+						} else if ((this.fu == "70符" || this.fu == "80符" || this.fu == "90符" || this.fu == "100符" || this.fu == "110符") && (this.han == "3飜" || this.han == "4飜") && (this.agari == "親のロン" || this.agari == "親のツモ")) {
+							this.tensu = "12,000";
+						} else if (this.han == "満貫" && (this.agari == "子のロン" || this.agari == "子のツモ")) {
+							this.tensu = "8,000";
+						} else if (this.han == "満貫" && (this.agari == "親のロン" || this.agari == "親のツモ")) {
+							this.tensu = "12,000";
+						} else if (this.han == "跳満" && (this.agari == "子のロン" || this.agari == "子のツモ")) {
+							this.tensu = "12,000";
+						} else if (this.han == "跳満" && (this.agari == "親のロン" || this.agari == "親のツモ")) {
+							this.tensu = "18,000";
+						} else if (this.han == "倍満" && (this.agari == "子のロン" || this.agari == "子のツモ")) {
+							this.tensu = "16,000";
+						} else if (this.han == "倍満" && (this.agari == "親のロン" || this.agari == "親のツモ")) {
+							this.tensu = "24,000";
+						} else if (this.han == "三倍満" && (this.agari == "子のロン" || this.agari == "子のツモ")) {
+							this.tensu = "24,000";
+						}　else if (this.han == "三倍満" && (this.agari == "親のロン" || this.agari == "親のツモ")) {
+							this.tensu = "36,000";
+						} else if (this.han == "役満" && (this.agari == "子のロン" || this.agari == "子のツモ")) {
+							this.tensu = "32,000";
+						} else if (this.han == "役満" && (this.agari == "親のロン" || this.agari == "親のツモ")) {
+							this.tensu = "48,000";
+						} else if (this.han == "ダブル役満" && (this.agari == "子のロン" || this.agari == "子のツモ")) {
+							this.tensu = "64,000";
+						}
+						else if (this.han == "ダブル役満" && (this.agari == "親のロン" || this.agari == "親のツモ")) {
+							this.tensu = "96,000";
 						}
 						else {
 							this.tensu = "0";
