@@ -8,9 +8,9 @@
 	</head>
 	
 	<body>
-		<h2>麻雀点数計算</h2>
+		<h2>麻雀点数計算ツール</h2>
 		<div id="app">
-			<p>アガリ： 
+			<p>アガリ　： 
 			<select v-model="agari">
 				<option disabled value="">アガリの形</option>
 				<option value="子のロン">子のロン</option>
@@ -19,7 +19,7 @@
 				<option value="親のツモ">親のツモ</option>
 			</select>
 			</p>
-			<p>　符　：
+			<p>　符　　：
 			<select v-model="fu">
 				<option disabled value="">符数</option>
 				<option value="20符">20符（平和・ツモ）</option>
@@ -35,7 +35,7 @@
 				<option value="110符">110符</option>
 			</select>
 			</p>
-			<p>　飜　： 
+			<p>　飜　　： 
 				<select v-model="han">
 					<option disabled value="">飜数</option>
 					<option value="1飜">1飜</option>
@@ -49,9 +49,80 @@
 					<option value="役満">役満</option>
 					<option value="ダブル役満">ダブル役満</option>
 				</select>
-			</p>
+			<p>※役種一覧をご覧になりたいときは、左のラジオボタンを押して下さい</p>
+			<p> 役種一覧：
+				<label for="1飜"><input type="radio" value="1飜" v-model="yaku">1飜</label>
+				<label for="2飜"><input type="radio" value="2飜" v-model="yaku">2飜</label>
+				<label for="3飜"><input type="radio" value="3飜" v-model="yaku">3飜</label>
+				<label for="6飜"><input type="radio" value="6飜" v-model="yaku">6飜</label>
+				<label for="満貫"><input type="radio" value="満貫" v-model="yaku">満貫</label>
+				<label for="役満"><input type="radio" value="役満" v-model="yaku">役満</label>
+				<label for="ダブル役満"><input type="radio" value="ダブル役満" v-model="yaku">ダブル役満</label>
+			</p>	
+				<hr>
+				<div v-if="yaku === '1飜'">
+					<label><input type="radio">断幺九（タンヤオ）</label>
+					<label><input type="radio">立直（リーチ）</label>
+					<label><input type="radio">門前清自摸和（ツモ）</label>
+					<label><input type="radio">役牌：自風牌（トン・ナン・シャー・ペー）</label>
+					<label><input type="radio">役牌：場風牌（トン・ナン・シャー・ペー）</label>
+					<label><input type="radio">役牌：三元牌（ハク・ハツ・チュン）</label><br>
+					<label><input type="radio">平和（ピンフ）</label>
+					<label><input type="radio">一盃口（イーペーコー）</label>
+					<label><input type="radio">槍槓（チャンカン）</label>
+					<label><input type="radio">嶺上開花（リンシャン）</label>
+					<label><input type="radio">海底摸月（ハイテイ）</label>
+					<label><input type="radio">河底撈魚（ホウテイ）</label>
+					<label><input type="radio">一発（イッパツ）</label>
+					<label><input type="radio">ドラ</label>
+					<label><input type="radio">赤ドラ</label>
+					<label><input type="radio">抜きドラ</label>
+				</div>
+				<div v-else-if="yaku === '2飜'">
+					<label><input type="radio">ダブル立直（ダブルリーチ）</label>
+					<label><input type="radio">三色同刻（サンショクドーコー）</label>
+					<label><input type="radio">三槓子（サンカンツ）</label>
+					<label><input type="radio">対々和（トイトイ）</label>
+					<label><input type="radio">三暗刻（サンアンコー）</label>
+					<label><input type="radio">小三元（ショーサンゲン）</label>
+					<label><input type="radio">混老頭（ホンロートー）</label><br>
+					<label><input type="radio">七対子（チートイ）</label>
+					<label><input type="radio">混全帯幺九（チャンタ）</label>
+					<label><input type="radio">一気通貫（イッツー）</label>
+					<label><input type="radio">三色同順（サンショクドウジュン）</label>
+				</div>
+				<div v-else-if="yaku === '3飜'">
+					<label><input type="radio">二盃口（リャンペーコー）</label>
+					<label><input type="radio">純全帯幺九（ジュンチャン）</label>
+					<label><input type="radio">混一色（ホンイツ）</label>
+				</div>
+				<div v-else-if="yaku === '6飜'">
+					<label><input type="radio">清一色（チンイツ）</label>
+				</div>
+				<div v-else-if="yaku === '満貫'">
+					<label><input type="radio">流し満貫（ナガシマンガン）</label>
+				</div>
+				<div v-else-if="yaku === '役満'">
+					<label><input type="radio">天和（テンホー）</label>
+					<label><input type="radio">地和（チーホー）</label>
+					<label><input type="radio">大三元（ダイサンゲン）</label>
+					<label><input type="radio">四暗刻（スーアンコウ）</label>
+					<label><input type="radio">字一色（ツーイーソー）</label>
+					<label><input type="radio">緑一色（リューイーソー）</label>
+					<label><input type="radio">清老頭（チンロートー）</label>
+					<label><input type="radio">四槓子（スーカンツ）</label>
+					<label><input type="radio">国士無双（コクシムソウ）</label>
+					<label><input type="radio">小四喜（ショースーシー）</label>
+					<label><input type="radio">九蓮宝燈（チューレン　ポートー）</label>
+				</div>
+				<div v-else-if="yaku === 'ダブル役満'">
+					<label><input type="radio">四暗刻単騎（スーアンコウタンキ）</label>
+					<label><input type="radio">国士無双十三面待ち（コクシムソウジュウサンメンマチ）</label>
+					<label><input type="radio">純正九蓮宝燈（チューレンキュウメンマチ）</label>
+					<label><input type="radio">大四喜（ダイスーシー）</label>
+				</div>
 			<p>5飜以上符の設定不要</p>
-			<p>続けて計算したいときはダブルクリックすると表示されます</p>
+			<p>計算するときはダブルクリックして下さい</p>
 			<button v-on:click="keisan">計算する</button>
 			<p v-show="show">　　　{{ "あなたの点数は" + tensu + "点です" }}   </p>
 		</div>
@@ -65,6 +136,7 @@
 					han: '',
 					tensu: "",
 					show: false,
+					yaku: '',
 				},
 				methods: {
 					keisan: function () {
@@ -263,7 +335,7 @@
 							this.tensu = "24,000";
 						} else if (this.han == "三倍満" && (this.agari == "子のロン" || this.agari == "子のツモ")) {
 							this.tensu = "24,000";
-						} else if (this.han == "三倍満" && (this.agari == "親のロン" || this.agari == "親のツモ")) {
+						}　else if (this.han == "三倍満" && (this.agari == "親のロン" || this.agari == "親のツモ")) {
 							this.tensu = "36,000";
 						} else if (this.han == "役満" && (this.agari == "子のロン" || this.agari == "子のツモ")) {
 							this.tensu = "32,000";
@@ -271,10 +343,12 @@
 							this.tensu = "48,000";
 						} else if (this.han == "ダブル役満" && (this.agari == "子のロン" || this.agari == "子のツモ")) {
 							this.tensu = "64,000";
-						} else if (this.han == "ダブル役満" && (this.agari == "親のロン" || this.agari == "親のツモ")) {
+						}
+						else if (this.han == "ダブル役満" && (this.agari == "親のロン" || this.agari == "親のツモ")) {
 							this.tensu = "96,000";
-						} else {
-							this.tensu = "ありえないアガリの";
+						}
+						else {
+							this.tensu = "0";
 						}
 					}
 				}
